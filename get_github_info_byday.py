@@ -22,7 +22,6 @@ def daterange(start_date, end_date):
 today = datetime.today()
 grad_day = datetime(2010, 5, 30)
 
-# check ratelimits before you start:
 for day in daterange(grad_day, today+timedelta(1)):
     filetag = str(day.year) + '-' + str(day.month).zfill(2) + '-' + str(day.day).zfill(2)
     query = 'created:' + filetag + ' stars:>4'
