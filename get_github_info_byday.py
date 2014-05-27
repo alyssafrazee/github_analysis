@@ -46,3 +46,5 @@ for day in daterange(grad_day, today+timedelta(1)):
                 f.write('\t')
                 f.write(str(repo.created_at))
                 f.write('\n')
+
+    time.sleep(144) #only 5000 requests per hour allowed, budget for ~200 reqs per loop iteration
