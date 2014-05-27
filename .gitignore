@@ -1,0 +1,6 @@
+*.txt 
+*.pyc
+*.ipynb
+*.html
+*.png
+Vagrantfile
