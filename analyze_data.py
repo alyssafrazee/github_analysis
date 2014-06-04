@@ -23,7 +23,7 @@ for language in languages:
     norm = sum(vc)
     for aggcount in vc.iteritems():
         gclass, count = aggcount
-        plotdata[gclass][language] = 100*float(count)/norm
+        plotdata[gclass][language] = "{:.1f}".format(100*float(count)/norm)
 
 # save file to use in D3 graphic:
 plotdata.to_csv('plotdata.csv')
