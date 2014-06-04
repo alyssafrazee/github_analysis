@@ -1,7 +1,7 @@
 ## gender of GitHub repo owners
 -------------
 
-This is the code I used to do a little data-driven analysis of the gender breakdown of owners of public GitHub repositories. [I wrote a blog post]() about what I found.
+This is the code I used to do a little data-driven analysis of the gender breakdown of owners of public GitHub repositories. [I wrote a blog post](http://alyssafrazee.com/gender-and-github-code.html) about what I found.
 
 The code in here is:
 * `get_github_info_byday.py`: uses the GitHub API to scrape repository data
