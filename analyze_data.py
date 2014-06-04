@@ -1,7 +1,6 @@
 #!/usr/bin/python
 
 import pandas as pd
-import numpy as np
 import sqlite3
 import sexmachine.detector as gender
 import matplotlib.pyplot as plt
