@@ -11,6 +11,9 @@ The code in here is:
 * `bargraph.js`: the JavaScript/D3 code used to make [the graphic showing the results](http://alyssafrazee.com/plgender.html)
 
 #### dependencies
-*Python libraries*: [PyGithub](http://jacquev6.github.io/PyGithub/v1/index.html), [Unidecode](https://pypi.python.org/pypi/Unidecode/0.04.16), [Pandas](http://pandas.pydata.org/), [SexMachine](https://pypi.python.org/pypi/SexMachine/), [Matplotlib](http://matplotlib.org/)  
+**Python libraries**: [PyGithub](http://jacquev6.github.io/PyGithub/v1/index.html), [Unidecode](https://pypi.python.org/pypi/Unidecode/0.04.16), [Pandas](http://pandas.pydata.org/), [SexMachine](https://pypi.python.org/pypi/SexMachine/), [Matplotlib](http://matplotlib.org/)  
 
-*R packages*: [devtools](http://cran.r-project.org/web/packages/devtools/index.html) (to install [my version of read.csv.sql](https://github.com/alyssafrazee/read.csv.sql))
+**R packages**: [devtools](http://cran.r-project.org/web/packages/devtools/index.html) (to install [my version of read.csv.sql](https://github.com/alyssafrazee/read.csv.sql))
+
+#### license
+MIT
