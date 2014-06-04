@@ -1,5 +1,5 @@
 
-var margin = {top: 20, right: 20, bottom: 30, left: 40},
+var margin = {top: 20, right: 20, bottom: 80, left: 40},
     width = window.innerWidth - margin.left - margin.right - 250,
     height = window.innerHeight - margin.top - margin.bottom - 50;
 
@@ -42,26 +42,22 @@ d3.csv("plotdata_nonorm.csv", function(error, data) {
   y.domain([0, 100]);
   data.forEach(function(d) {
     d.genders.forEach(function(e){
-      e.y0 = e.y0/d.total*100; 
-      e.y1 = e.y1/d.total*100; 
+      e.y0 = Math.round(e.y0/d.total*100*100)/100; 
+      e.y1 = Math.round(e.y1/d.total*100*100)/100; 
       })
   })
 
   svg.append("g")
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
-      .call(xAxis);
-
-  svg.append("g")
-      .attr("class", "y axis")
-      .call(yAxis)
-    .append("text")
-      .attr("transform", "rotate(-90)")
-      .attr("y", 6)
-      .attr("dy", ".71em")
-      .style("text-anchor", "end")
-      .attr("class", "y_label")
-      .text("Percentage of repositories per category");
+      .call(xAxis)
+      .selectAll("text")  
+            .style("text-anchor", "end")
+            .attr("dx", "-.8em")
+            .attr("dy", ".15em")
+            .attr("transform", function(d) {
+                return "rotate(-35)" 
+                });
   
   var tooltip = d3.select("body")
       .append("div")
@@ -87,12 +83,22 @@ d3.csv("plotdata_nonorm.csv", function(error, data) {
         current_rectangle_data = d3.select(this).datum();
         bar_data = d3.select(this.parentNode).datum();
         factor = normalized ? bar_data.total/100 : 1;
-        tooltip.text(bar_data[current_rectangle_data.name]/factor);
+        tooltip.text(Math.round(bar_data[current_rectangle_data.name]/factor*100)/100);
         return tooltip.style("visibility", "visible");
       })
       .on("mousemove", function(){return tooltip.style("top", (d3.event.pageY-10)+"px").style("left",(d3.event.pageX+10)+"px");})
       .on("mouseout", function(){return tooltip.style("visibility", "hidden");});
 
+  svg.append("g")
+      .attr("class", "y axis")
+      .call(yAxis)
+    .append("text")
+      .attr("transform", "rotate(-90)")
+      .attr("y", 6)
+      .attr("dy", ".71em")
+      .style("text-anchor", "end")
+      .attr("class", "y_label")
+      .text("Percentage of repositories per category");
 
   var legend = svg.selectAll(".legend")
       .data(color.domain().slice().reverse())
@@ -146,8 +152,8 @@ d3.csv("plotdata_nonorm.csv", function(error, data) {
           d3.select(".y_label").text("Percentage of repositories per category");
           data.forEach(function(d) {
             d.genders.forEach(function(e){
-              e.y0 = e.y0/d.total*100; 
-              e.y1 = e.y1/d.total*100; 
+              e.y0 = Math.round(e.y0/d.total*100*100)/100; 
+              e.y1 = Math.round(e.y1/d.total*100*100)/100; 
             })
           }) 
         } else {
