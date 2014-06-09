@@ -8,7 +8,7 @@ The code in here is:
 * `merge_files.sh`: puts all scraped data together in a big text file
 * `make_database.R`: dumps the scraped data into a SQLite database
 * `analyze_data.py`: processes the data
-* `bargraph.js`: the JavaScript/D3 code used to make [the graphic showing the results](http://alyssafrazee.com/plgender.html)
+* `bargraph.js`: the JavaScript/D3 code used to make [the graphic showing the results](http://alyssafrazee.com/plgender.html). [Alex Wilson](https://github.com/alexandrinaw) made major contributions to this code.
 
 #### dependencies
 **Python libraries**: [PyGithub](http://jacquev6.github.io/PyGithub/v1/index.html), [Unidecode](https://pypi.python.org/pypi/Unidecode/0.04.16), [Pandas](http://pandas.pydata.org/), [SexMachine](https://pypi.python.org/pypi/SexMachine/), [Matplotlib](http://matplotlib.org/)  
