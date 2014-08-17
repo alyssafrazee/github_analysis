@@ -9,9 +9,10 @@ d = gender.Detector(case_sensitive=False, unknown_value='neutral')
 
 # let's start with Python
 # read the data out of the database file:
-connec = sqlite3.connect('dat.db')
+#connec = sqlite3.connect('dat.db')
+connec = sqlite3.connect('dat_anon.db') #last names removed for public database
 df = pd.read_sql('select owner_name, language from github', connec)
-splitnames = [x.split(' ') for x in df['owner_name']]
+splitnames = [x.split(' ') for x in df['owner_name']] #redundant if using dat_anon
 df['gender'] = [d.get_gender(x[0]) for x in splitnames]
 labels = ['male', 'mostly_male', 'neutral', 'mostly_female', 'female']
 languages = ['JavaScript', 'Python', 'Ruby', 'PHP', 'Java', 'Objective-C', 'C', 'C++', 'Shell', 'C#', 'Go' ,'Perl', 'Clojure', 'Scala', 'Haskell', 'Erlang', 'R']
