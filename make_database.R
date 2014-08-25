@@ -21,8 +21,8 @@ ss = function(x, pattern, slot=1, ...){
 }
 first_name = ss(as.character(allh$owner_name), pattern=' ', slot=1)
 allh$owner_name = first_name
-write.table(allh, file='allh_anon.txt', quote=FALSE, row.names=TRUE, 
-    col.names=FALSE, sep='\t')
+write.table(allh, file='allh_anon.txt', quote=FALSE, row.names=FALSE, 
+    col.names=TRUE, sep='\t')
 cat(file='dat_anon.db')
 read.csv.sql('allh_anon.txt', sql=statement, dbname='dat_anon.db', sep='\t')
 
