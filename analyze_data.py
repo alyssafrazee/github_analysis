@@ -41,29 +41,3 @@ for language in languages:
 plotdata_nonorm.to_csv('plotdata_nonorm.csv')
 
 
-# matplotlib graphics (static)
-plotdata_msort = plotdata.sort('male', ascending=False, axis=0)
-plotdata_fsort = plotdata.sort('female', ascending=False, axis=0)
-colors = ['#FF6600', '#FFA366', '#C9C9C9', '#80CC80', '#009900']
-
-def makebarplot(dat, fname):
-    barlocs = range(1, len(languages)+1)
-    bars = []
-    for i in range(0, len(labels)):
-        bars.append(plt.bar(barlocs, dat[labels[i]], color=colors[i], bottom=dat[labels[:i]].sum(1)))
-    plt.xlim(0, len(languages)+2)
-    plt.ylim(0, 26700)
-    plt.title('gender distribution of github repos by programming language')
-    plt.xticks([x+0.5 for x in barlocs], dat.index, rotation=90)
-    plt.ylabel('percent of repos, by first name classification')
-    #plt.legend(reversed(bars), reversed(labels), loc=7) #loc=7 specifies center, and also, I sort of hate the legend
-    plt.tight_layout()
-    plt.savefig(fname, facecolor='white')
-
-makebarplot(plotdata_msort, 'plot_msort_nonorm.png')
-makebarplot(plotdata_fsort, 'plot_fsort.png')
-
-plotdata_neutralsort = plotdata.sort('neutral', ascending=False, axis=0)
-makebarplot(plotdata_neutralsort, 'plot_neutralsort.png')
-
-
