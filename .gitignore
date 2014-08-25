@@ -1,6 +1,6 @@
 *.txt
 *.pyc
 *.ipynb
-*.html
+hs_dir.html
 *.png
 Vagrantfile
