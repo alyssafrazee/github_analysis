@@ -37,13 +37,13 @@ d3.csv("plotdata_nonorm.csv", function(error, data) {
     d.total = d.genders[d.genders.length - 1].y1;
   });
 
-  data.sort(function(a, b) { return a['male'] - b['male']; }); 
+  data.sort(function(a, b) { return a['male'] - b['male']; });
   x.domain(data.map(function(d) { return d.language; }));
   y.domain([0, 100]);
   data.forEach(function(d) {
     d.genders.forEach(function(e){
-      e.y0 = Math.round(e.y0/d.total*100*100)/100; 
-      e.y1 = Math.round(e.y1/d.total*100*100)/100; 
+      e.y0 = Math.round(e.y0/d.total*100*100)/100;
+      e.y1 = Math.round(e.y1/d.total*100*100)/100;
       })
   })
 
@@ -51,27 +51,27 @@ d3.csv("plotdata_nonorm.csv", function(error, data) {
       .attr("class", "x axis")
       .attr("transform", "translate(0," + height + ")")
       .call(xAxis)
-      .selectAll("text")  
+      .selectAll("text")
             .style("text-anchor", "end")
             .attr("dx", "-.8em")
             .attr("dy", ".15em")
             .attr("transform", function(d) {
-                return "rotate(-35)" 
+                return "rotate(-35)"
                 });
-  
+
   var tooltip = d3.select("body")
       .append("div")
       .style("position", "absolute")
       .style("z-index", "10")
       .style("visibility", "hidden")
       .text("a simple tooltip");
-  
+
   var language = svg.selectAll(".language")
       .data(data)
     .enter().append("g")
       .attr("class", "g")
       .attr("transform", function(d) { return "translate(" + x(d.language) + ",0)"; });
-      
+
   language.selectAll("rect")
       .data(function(d) { return d.genders; })
     .enter().append("rect")
@@ -152,19 +152,19 @@ d3.csv("plotdata_nonorm.csv", function(error, data) {
           d3.select(".y_label").text("Percentage of repositories per category");
           data.forEach(function(d) {
             d.genders.forEach(function(e){
-              e.y0 = Math.round(e.y0/d.total*100*100)/100; 
-              e.y1 = Math.round(e.y1/d.total*100*100)/100; 
+              e.y0 = Math.round(e.y0/d.total*100*100)/100;
+              e.y1 = Math.round(e.y1/d.total*100*100)/100;
             })
-          }) 
+          })
         } else {
           y.domain([0, d3.max(data, function(d) { return d.total; })]);
           d3.select(".y_label").text("Number of repositories per category");
           data.forEach(function(d) {
             d.genders.forEach(function(e){
-              e.y0 = e.y0*d.total/100; 
-              e.y1 = e.y1*d.total/100; 
+              e.y0 = e.y0*d.total/100;
+              e.y1 = e.y1*d.total/100;
             })
-          }) 
+          })
         }
 
         normalized = !normalized;
@@ -188,6 +188,5 @@ d3.csv("plotdata_nonorm.csv", function(error, data) {
       .style("position", "absolute")
       .style("z-index", "10")
       .text("Raw Repo Counts");
-
 
 });
